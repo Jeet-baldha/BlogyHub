@@ -4,6 +4,10 @@ import authService from './appwrite/auth';
 import { login, logout } from './store/authSlice';
 import Header from "./components/Header/Header"
 import Footer from "./components/Footer/Footer";
+import { Container, Logo, LogoutBtn } from './components';
+import Input from './components/Input';
+import Button from './components/Button';
+
 
 
 function App() {
@@ -29,16 +33,14 @@ function App() {
 
     return !loading ? (
       <>
-        <div className="min-h-screen flex flex-wrap content-between bg-gray-600 "> 
-          <div className='w-full block '>
-           <Header/>
-           <main>
-           Hello
-            {/* <outlet></outlet> */}
-           </main>
-           <Footer/>
-          </div>
-        </div>
+        
+          <Container>
+          <Logo></Logo>
+            <Input label="Email"></Input>
+            <Input label="Password" type="password"></Input>
+            <Button>Login</Button>
+          </Container>
+          
       </>
     ) : (
       <div>loading...</div>
