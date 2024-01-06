@@ -1,20 +1,21 @@
+/* eslint-disable react/prop-types */
 import React,{useId} from 'react'
 
 
 const Input = React.forwardRef( function Input({
     label,
     type = 'text',
-     className = '',
+    className = '',
     ...props
 },ref) {
     const id = useId();
 
     return (
-       <div className='w-full '>
+        <div className='w-full '>
         {label &&  (<label 
             className='inline-block mb-1 pl-1' 
             htmlFor={id}>
-                {label}
+            {label}
         </label>)
         }
         <input 
@@ -24,7 +25,8 @@ const Input = React.forwardRef( function Input({
             {...props}
             id={id}
             />
-       </div>
+        </div>
     )
 })
 export default Input
+
