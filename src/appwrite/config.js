@@ -88,8 +88,7 @@ export class Service{
                 conf.appWriteDatabaseID,
                 conf.appWriteCollectionId,
                 queries,
-            )
-            
+            )   
         } catch (error) {
             console.log("Appwrite service :: getPosts :: error: " + error);
             return false;

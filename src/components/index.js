@@ -6,4 +6,11 @@ import LogoutBtn from "./Header/LogoutBtn.jSX";
 import Button from "./Button";
 import Input from "./Input";
 import RTE from "./RTE";
-export {Header, Footer,Container,Logo,LogoutBtn,Button,Input,RTE}
+import Signup from "./SignUp"
+import  Login  from "./Login";
+import PostForm from "./post-form/PostForm";
+import PostCard from "./PostCard"
+import AuthLayout from "./AuthLayout";
+import Select from './Select'
+
+export {Header, Footer,Container,Logo,LogoutBtn,Button,Select,Input,RTE,Signup,Login,PostForm,PostCard,AuthLayout}

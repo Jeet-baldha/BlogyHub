@@ -9,19 +9,19 @@ export class AuthService{
     constructor(){
         this.client
             .setEndpoint(conf.appWriteUrl)
-            .setEndpoint(conf.appWriteProjectID)
+            .setProject(conf.appWriteProjectID)
         this.account = new Account(this.client);
     }
 
     async createAccount({email,password,name}){
         try {
-           const userAccount =  await this.account.create(ID.unique(),email,password,name);
-           if(userAccount){
+            const userAccount =  await this.account.create(ID.unique(),email,password,name);
+            if(userAccount){
                 this.login();
-           }
-           else{
-            return userAccount ;
-           }
+            }
+            else{
+                return userAccount ;
+            }
         } catch (error) {
             throw(error);
         }
