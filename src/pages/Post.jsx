@@ -8,8 +8,10 @@ import { useSelector } from "react-redux";
 
 export default function Post() {
     const [post, setPost] = useState(null);
+    const [url,setUrl] = useState("");
     const { slug } = useParams();
     const navigate = useNavigate();
+    
 
     const userData = useSelector((state) => state.auth.userData);
 
@@ -18,7 +20,12 @@ export default function Post() {
     useEffect(() => {
         if (slug) {
             appwriteService.getPost(slug).then((post) => {
-                if (post) setPost(post);
+                if (post) {
+                    setPost(post);
+                    appwriteService.getFilePreview(post.image).then((file) => {
+                        setUrl(file)
+                    })
+                }
                 else navigate("/");
             });
         } else navigate("/");
@@ -27,7 +34,7 @@ export default function Post() {
     const deletePost = () => {
         appwriteService.deletePost(post.$id).then((status) => {
             if (status) {
-                appwriteService.deleteFile(post.featuredImage);
+                appwriteService.deleteFile(post.image);
                 navigate("/");
             }
         });
@@ -38,9 +45,9 @@ export default function Post() {
             <Container>
                 <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
                     <img
-                        src={appwriteService.getFilePreview(post.featuredImage)}
+                        src={url}
                         alt={post.title}
-                        className="rounded-xl"
+                        className="rounded-xl w-48"
                     />
 
                     {isAuthor && (
